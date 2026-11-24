@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Triaxiality of galaxy clusters | Radhakrishnan Srinivasan</title>
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:opsz,wght@6..72,400;6..72,600&family=Hanken+Grotesk:wght@400;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="project.css">
+</head>
+<body>
+<header><a href="index.html#research">Back to the cluster</a></header>
+<main>
+<h1>Triaxiality of galaxy clusters</h1>
+<p class="lede">Galaxy clusters are elongated in three dimensions, but most weak-lensing analyses model them as spheres. This project measures their shape directly from the lensing signal.</p>
+<p class="meta">LSST DESC Galaxy Cluster Working Group, Fall 2023 to present. Paper in internal review (2025).</p>
+
+<div class="stat">
+<div><b>Up to 20%</b>weak-lensing mass bias when a triaxial halo is projected along the line of sight (Herbonnet et al. 2019)</div>
+<div><b>Monopole + quadrupole</b>fit simultaneously for mass, concentration and ellipticity</div>
+<div><b>DES Y3 redMaPPer</b>clusters stacked along their major axis</div>
+</div>
+
+<h2>Why it matters</h2>
+<p>Rubin LSST will measure cluster lensing at much higher signal-to-noise than earlier surveys, so the spherical-NFW assumption will become a leading systematic. Modeling the elliptical extension, and the quadrupole lensing signal it produces, lets us correct for it instead of averaging over it.</p>
+
+<h2>Approach</h2>
+<ul>
+<li><b>Software.</b> I developed a module inside CLMM v2, the Cluster Lens Mass Modeling library of LSST DESC, that fits the projected 2-D ellipticity in the plane of the sky, following Shin et al. (2018).</li>
+<li><b>Simulations.</b> Tested on elliptical-NFW shear mock catalogs and on SkySim5000, where ellipticity and mass are recovered accurately.</li>
+<li><b>Data.</b> Applied to DES Y3 redMaPPer clusters. The major axis of each cluster is computed from its satellite galaxy distribution using second moments, and clusters are aligned along it before stacking.</li>
+<li><b>Cross-check.</b> Consistent with the ellipticity and mass reported by McClintock et al. (2019) for DES Y1 redMaPPer clusters.</li>
+</ul>
+
+<h2>Paper</h2>
+<p>“Constraining Galaxy Cluster Triaxiality via Weak Lensing – I. Preparation for the Rubin Data Beyond Leading Order”, R. Srinivasan, S. Fu, R. Solomon, T. Shin, et al. (2025). In internal review in the LSST DESC collaboration.</p>
+
+<h2>Related work</h2>
+<p>The same idea of using shape as a probe of orientation drives the <a href="index.html#bcg">BCG orientation-bias project</a>, and the <a href="shear-ratios.html">shear-ratio project</a> builds a cosmological probe that is insensitive to the lens mass distribution.</p>
+</main>
+<footer>Radhakrishnan Srinivasan, Stony Brook University. <a href="mailto:radhakrishnan.srinivasan@stonybrook.edu">Email</a></footer>
+</body>
+</html>

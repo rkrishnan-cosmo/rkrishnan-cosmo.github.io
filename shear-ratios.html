@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Weak-lensing shear ratios | Radhakrishnan Srinivasan</title>
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:opsz,wght@6..72,400;6..72,600&family=Hanken+Grotesk:wght@400;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="project.css">
+</head>
+<body>
+<header><a href="index.html#research">Back to the cluster</a></header>
+<main>
+<h1>Dark energy from weak-lensing shear ratios</h1>
+<p class="lede">Background galaxies at different redshifts, lensed by the same cluster, carry the imprint of the expansion history. Their shear ratio measures it without needing to know the lens mass.</p>
+<p class="meta">Advised by Prof. Anja von der Linden, Fall 2023 to present. Paper to be submitted soon (2026).</p>
+
+<div class="stat">
+<div><b>w and Ωm</b>dark energy equation of state and matter density</div>
+<div><b>300,000</b>simulated galaxies behind a typical cluster in the forecast</div>
+<div><b>~60,000</b>spectroscopic redshifts collected so far from SDSS, eBOSS, DESI and others</div>
+</div>
+
+<h2>The idea</h2>
+<p>For galaxies lensed by the same part of a cluster, the ratio of their reduced shears is a strong function of the expansion history and only weakly depends on the lens mass distribution. It is therefore an independent cosmological probe, and combined with cluster counts it can give more robust constraints, because it does not share the projection systematics that affect counts.</p>
+
+<h2>Method</h2>
+<ul>
+<li>Generate mock shear catalogs for a cluster lens modeled as a singular isothermal sphere, with spectroscopic redshifts.</li>
+<li>Fit the shear normalization from the radial dependence in each tomographic bin.</li>
+<li>Fit the ratio of normalizations across bins with Bayesian inference to constrain cosmology.</li>
+</ul>
+
+<h2>Results so far</h2>
+<p>With shape noise included and an uninformative Jeffreys prior on w, the simulated analysis recovers the input cosmology (w = −1.0, Ωm = 0.3). We are now forecasting the number of spectroscopic galaxies needed behind a cluster to reach this precision.</p>
+
+<h2>Applying it to data</h2>
+<ul>
+<li><b>Stacked tomography.</b> Preparing a weak-lensing tomography measurement for stacked clusters from DES Y3 redMaPPer, DESI, eROMaPPer and SDSS, using spectroscopic redshifts of cluster-field galaxies.</li>
+<li><b>Rubin commissioning data.</b> The shear-ratio test on Abell 360 validates photometric redshifts and shear estimates by checking consistency with the ΛCDM prediction. This is part of an LSST DESC paper in preparation.</li>
+<li><b>Next.</b> Spectroscopic surveys such as DESI and 4MOST will let shear ratios constrain the expansion history almost on their own.</li>
+</ul>
+
+<h2>Paper</h2>
+<p>“Cosmology with the reduced-shear ratio estimator in galaxy clusters”, R. Srinivasan, A. von der Linden (2026). To be submitted soon.</p>
+
+<h2>Related work</h2>
+<p>See the <a href="triaxiality.html">triaxiality project</a>, which models the cluster shape that this method deliberately avoids depending on.</p>
+</main>
+<footer>Radhakrishnan Srinivasan, Stony Brook University. <a href="mailto:radhakrishnan.srinivasan@stonybrook.edu">Email</a></footer>
+</body>
+</html>

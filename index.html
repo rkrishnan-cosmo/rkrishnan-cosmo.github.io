@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Radhakrishnan Srinivasan | Galaxy cluster cosmology</title>
+<meta name="description" content="Radhakrishnan Srinivasan, Ph.D. candidate in astronomy at Stony Brook University. Galaxy cluster orientation, triaxiality, and weak-lensing cosmology.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,600;1,6..72,400&family=Hanken+Grotesk:wght@400;600&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#05060d;--fg:#e9ebf4;--mut:#9ca4bf;--warm:#ffb86b;--cool:#86b4ff;--line:#252a40;
+--serif:"Newsreader",Georgia,serif;--sans:"Hanken Grotesk",system-ui,sans-serif;color-scheme:dark}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:radial-gradient(ellipse at 70% 40%,#0c1030 0,var(--bg) 60%) fixed;color:var(--fg);font:18px/1.65 var(--serif)}
+#bg{position:fixed;inset:0;width:100%;height:100%;z-index:0}
+#labels{position:fixed;inset:0;z-index:5;pointer-events:none}
+.gal{position:absolute;left:0;top:0;pointer-events:auto;display:flex;align-items:center;gap:.5rem;background:none;border:0;color:var(--fg);font:600 .8rem var(--sans);cursor:pointer;padding:6px;margin:-20px 0 0 -20px;white-space:nowrap}
+.gal i{width:28px;height:28px;border:1.5px solid var(--cool);border-radius:50%;display:block;box-shadow:0 0 14px #86b4ff55;transition:transform .2s,border-color .2s}
+.gal.bcg i{border-color:var(--warm);box-shadow:0 0 18px #ffb86b66}
+a.gal{text-decoration:none}
+.gal.page i{border-style:dashed;border-color:#9be8b0;box-shadow:0 0 14px #9be8b055}
+.gal span{background:#05060dcc;padding:2px 8px;border-radius:4px;opacity:0;transform:translateX(-4px);transition:.2s}
+.gal:hover i,.gal:focus-visible i{transform:scale(1.35)}
+.gal:hover span,.gal:focus-visible span,.gal.show span{opacity:1;transform:none}
+.gal:focus-visible{outline:2px solid var(--warm);outline-offset:2px;border-radius:8px}
+main{position:relative;z-index:2;pointer-events:none}
+.sec{min-height:100vh;display:flex;flex-direction:column;justify-content:center;padding:12vh 6vw}
+.col{max-width:520px;pointer-events:auto}
+h1{font:600 clamp(2.6rem,6vw,4.4rem)/1.02 var(--serif);margin:0 0 .4em;letter-spacing:-.02em}
+h2{font:600 1.9rem/1.15 var(--serif);margin:0 0 .6em}
+p{margin:0 0 1em}
+.sub{font:400 1.05rem/1.5 var(--sans);color:var(--mut)}
+.hint{margin-top:1.6rem;font:400 .95rem/1.5 var(--sans);color:var(--warm)}
+.card{display:block;width:100%;text-align:left;background:#0a0d1ecc;border:1px solid var(--line);border-left:3px solid var(--cool);color:inherit;font:inherit;padding:.9rem 1.1rem;margin:0 0 .8rem;border-radius:6px;cursor:pointer;backdrop-filter:blur(6px)}
+.card.bcg{border-left-color:var(--warm)}
+.card b{display:block;font:600 1.05rem var(--sans)}
+.card small{font:400 .88rem/1.4 var(--sans);color:var(--mut)}
+.card:hover{background:#12163a}
+a,button{color:var(--cool)}
+a:focus-visible,button:focus-visible{outline:2px solid var(--warm);outline-offset:2px}
+ol,ul{padding-left:1.2rem}li{margin-bottom:.6em}
+.pubs{background:#05060dcc;padding:.4rem 1.2rem .4rem 2.2rem;border-radius:8px;backdrop-filter:blur(6px)}
+.st{font:400 .85rem var(--sans);color:var(--mut)}
+#pg{position:fixed;inset:0;z-index:10;background:#02030aD9;display:flex;align-items:center;justify-content:center;padding:4vh 4vw;backdrop-filter:blur(4px)}
+#pg[hidden]{display:none}
+.box{position:relative;width:min(720px,100%);max-height:90vh;overflow:auto;background:#0a0d1e;border:1px solid var(--line);border-radius:10px;padding:2rem 2.2rem;animation:in .25s ease-out}
+.box h2{font-size:1.7rem}.box h3{font:600 1.05rem var(--sans);margin:1.4em 0 .4em;color:var(--warm)}
+.k{font:400 .9rem var(--sans);color:var(--warm);margin:0 0 .4rem}
+#x{position:absolute;right:.8rem;top:.6rem;background:none;border:0;font:400 2rem/1 var(--sans);cursor:pointer;color:var(--mut)}
+@keyframes in{from{opacity:0;transform:translateY(14px) scale(.98)}}
+@media(max-width:860px){.col{background:#05060dbb;padding:1rem;border-radius:8px;backdrop-filter:blur(6px)}.box{padding:1.6rem 1.2rem}}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.box{animation:none}*{transition:none!important}}
+</style>
+</head>
+<body>
+<canvas id="bg" aria-hidden="true"></canvas>
+<div id="labels"></div>
+
+<main>
+<section class="sec" id="top"><div class="col">
+<h1>Radhakrishnan Srinivasan</h1>
+<p class="sub">Ph.D. candidate in Physics (Astronomy track), Stony Brook University. I study how the shape and orientation of galaxy clusters bias optical cluster cosmology, and how to measure dark energy with weak lensing.</p>
+<p class="hint">The cluster behind this page is a simulated prolate halo. Each ring is a galaxy you can click. The glowing elongated one at the centre is the brightest cluster galaxy (BCG). Scroll to turn the cluster and watch the BCG look round when the major axis points at you. Dashed green rings open full project pages.</p>
+</div></section>
+
+<section class="sec" id="about"><div class="col">
+<h2>Research in brief</h2>
+<p>Galaxy clusters constrain dark energy (w), the matter density (Ωm), and the clustering amplitude (σ8). SZ- and X-ray-selected samples agree well with the CMB, but optically selected clusters are affected by projection effects along the line of sight.</p>
+<p>My work addresses that problem: measuring orientation bias with BCG shapes, fitting triaxial cluster shapes with weak lensing, and building a shear-ratio estimator that probes the expansion history while depending only weakly on the lens mass.</p>
+</div></section>
+
+<section class="sec" id="research"><div class="col">
+<h2>Projects</h2>
+<button class="card bcg" data-open="bcg"><b>BCG shape and orientation bias</b><small>SPT and ACT clusters matched to DES Y3 redMaPPer</small></button>
+<button class="card" data-open="triax"><b>Triaxiality of galaxy clusters</b><small>Quadrupole lensing in LSST DESC with CLMM</small></button>
+<button class="card" data-open="shear"><b>Cosmology with weak-lensing shear ratios</b><small>A new probe of the dark energy equation of state</small></button>
+<button class="card" data-open="a360"><b>A Rubin view of Abell 360</b><small>Shear-ratio test on commissioning data</small></button>
+</div></section>
+
+<section class="sec" id="pubs"><div class="col">
+<h2>Publications</h2>
+<div class="pubs" id="pubsList"></div>
+</div></section>
+
+<section class="sec" id="contact"><div class="col">
+<h2>Contact</h2>
+<p>Department of Physics and Astronomy, Stony Brook University<br>Earth and Space Sciences Building, 434<br><a href="mailto:radhakrishnan.srinivasan@stonybrook.edu">radhakrishnan.srinivasan@stonybrook.edu</a></p>
+<p><button class="card" data-open="cv"><b>CV, awards, teaching and talks</b><small>Open the full summary</small></button></p>
+</div></section>
+</main>
+
+<div id="pg" role="dialog" aria-modal="true" aria-labelledby="pt" hidden>
+<div class="box"><button id="x" aria-label="Close">×</button><p class="k" id="pk"></p><h2 id="pt"></h2><div id="pb"></div></div>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+<script>
+(()=>{
+const $=s=>document.querySelector(s);
+const RM=matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+/* ---------- Content (edit here) ---------- */
+const PUBS=`<ol>
+<li>“Brightest cluster galaxy ellipticity as proxy for halo shape: Orientation bias, assembly bias, and potential selection effects in SZ-selected clusters”, R. Srinivasan, T. Shin, et al. (2025). <span class="st">In collaboration-wide review in SPT and DES.</span></li>
+<li>“Constraining Galaxy Cluster Triaxiality via Weak Lensing – I. Preparation for the Rubin Data Beyond Leading Order”, R. Srinivasan, S. Fu, R. Solomon, T. Shin, et al. (2025). <span class="st">In internal review in LSST DESC.</span></li>
+<li>“Cosmology with the reduced-shear ratio estimator in galaxy clusters”, R. Srinivasan, A. von der Linden (2026). <span class="st">To be submitted soon.</span></li>
+</ol>
+<p class="st">Considerable contribution</p>
+<ul>
+<li>“CLMM v2: Updates on the LSST-DESC Cluster weak Lensing Mass Modeling library for cosmology”, The CLMM Team (2024). <span class="st">In review in DESC.</span></li>
+<li>“A Rubin view of A360”, LSST DESC (2026). <span class="st">In prep.</span></li>
+<li>“Weak Lensing Spectroscopic Tomography Using Stacked Massive Galaxy Clusters”, S. Fu, et al. <span class="st">In review by the end of the year.</span></li>
+</ul>`;
+
+const PAGES={
+bcg:{k:"Paper in collaboration-wide review (SPT and DES), 2025. Spring 2021 to Fall 2024, advised by Prof. Anja von der Linden.",t:"BCG shape as a probe of cluster orientation",
+h:`<p>Optical observables such as richness and weak-lensing profiles integrate matter along the line of sight, so a prolate cluster looks richer when its major axis points at us and poorer when it lies in the plane of the sky. I use the projected shape of each cluster’s brightest cluster galaxy as a proxy for the orientation of its halo.</p>
+<h3>Data</h3><p>SZ-selected clusters from the South Pole Telescope (SPT) and the Atacama Cosmology Telescope (ACT), matched to optical counterparts in the Dark Energy Survey Year 3 redMaPPer catalog. Clusters are split by BCG axis ratio (below the 25th and above the 75th percentile) and matched in SZ mass and redshift.</p>
+<h3>Findings</h3><ul>
+<li>Clusters with round BCGs (aligned along the line of sight) have higher richness than clusters with elliptical BCGs (in the plane of the sky).</li>
+<li>Lensing profiles differ in the 2-halo regime, with plane-of-sky clusters boosted higher.</li>
+<li>The orientation bias predicted by simulations (Zhang et al. 2023) cannot explain this: it predicts the opposite sign.</li>
+<li>Assembly bias likely acts alongside orientation, since BCG shape may correlate with intrinsic properties such as concentration.</li></ul>
+<h3>Next</h3><p>An SPT-DES MoU gives access to SPT-3G with DES Y6 redMaPPer clusters, roughly ten times more clusters, to quantify and correct orientation biases in cosmology.</p>`},
+triax:{k:"Paper in internal review (LSST DESC), 2025. Fall 2023 to present.",t:"Triaxiality of galaxy clusters",
+h:`<p>Clusters are prolate in three dimensions, yet are usually modeled with spherical NFW profiles. Projection of a triaxial halo can bias weak-lensing masses by up to 20% (Herbonnet et al. 2019). I lead the effort in LSST DESC to measure the projected 2-D ellipticity of clusters from their quadrupole lensing signal, following Shin et al. (2018).</p>
+<h3>Method</h3><ul>
+<li>Built a module for CLMM v2, the Cluster Lens Mass Modeling library of DESC.</li>
+<li>Tested on elliptical-NFW shear mock catalogs and SkySim5000, recovering ellipticity and mass accurately.</li>
+<li>Applied to DES Y3 redMaPPer clusters, stacked along the major axis computed from the satellite galaxy distribution using second moments.</li>
+<li>Monopole and quadrupole signals are fit simultaneously for mass, concentration and ellipticity.</li></ul>
+<p>This prepares us for the higher signal-to-noise of Rubin LSST data.</p>
+<p><a href="triaxiality.html">Open the project page</a></p>`},
+shear:{k:"Paper to be submitted soon. Fall 2023 to present, advised by Prof. Anja von der Linden.",t:"Dark energy from weak-lensing shear ratios",
+h:`<p>Background galaxies at different redshifts, lensed by the same part of a cluster, have a ratio of reduced shears that depends strongly on the expansion history and only weakly on the lens mass distribution. That makes the ratio an independent probe of the dark energy equation of state w and the matter density Ωm.</p>
+<h3>Approach</h3><ul>
+<li>Mock shear catalogs for a singular isothermal sphere lens with spectroscopic redshifts.</li>
+<li>Fit the shear normalization from the radial dependence, then fit ratios of normalizations across tomographic bins with Bayesian inference.</li>
+<li>Preliminary constraints on w and Ωm with 300,000 simulated galaxies, including shape noise and a Jeffreys prior on w, recover the true values (w = −1, Ωm = 0.3).</li>
+<li>Collecting about 60,000 spectroscopic redshifts of cluster-field galaxies from SDSS, eBOSS, DESI and others for a stacked tomography measurement.</li></ul>
+<p>Combined with cluster counts, shear ratios can give more robust constraints because they do not share the projection systematics of counts.</p>
+<p><a href="shear-ratios.html">Open the project page</a></p>`},
+a360:{k:"LSST DESC paper in preparation, 2026.",t:"A Rubin view of Abell 360",
+h:`<p>I applied the shear-ratio test to Abell 360 observations from the commissioning phase of the Vera C. Rubin Observatory. By measuring the shear-profile normalization as a function of source redshift and testing consistency with the ΛCDM prediction, the test validates photometric redshifts and shear estimates.</p>
+<p>The results are part of an LSST DESC publication that will enter internal review soon.</p>`},
+pubs:{k:"Publications",t:"Papers and manuscripts",h:PUBS},
+cv:{k:"Stony Brook University",t:"CV highlights",
+h:`<h3>Education</h3><ul>
+<li>Ph.D. Physics (Astronomy track), Stony Brook University, Fall 2020 to present</li>
+<li>M.A. Physics, Stony Brook University, 2018 to 2020 (GPA 3.71)</li>
+<li>B.Tech Mechanical Engineering, Dharmsinh Desai University, 2014 to 2018 (9.11/10)</li></ul>
+<h3>Fellowships and awards</h3><ul>
+<li>Gerald E. Brown Prize for Outstanding Research, Summer 2025</li>
+<li>Peter B. Kahn Prize for Outstanding Research, Summer 2023</li>
+<li>LSSTC Data Science Fellowship Program, 2021 to 2023</li>
+<li>Lourie Fellowship and Professional Development Fund, Summer 2021</li></ul>
+<h3>Community</h3><ul>
+<li>Co-lead, Junior DESC Organization (JuDO), Fall 2023 to Fall 2025</li>
+<li>Member of LSST DESC (Galaxy Cluster Working Group since 2021), the SPT-Cluster working group, and The300 Project</li></ul>
+<h3>Talks</h3><ul>
+<li>mmUniverse 2025, University of Chicago (contributed)</li>
+<li>Tri-state Cosmology Meeting, Flatiron Institute, September 2023 (invited)</li>
+<li>LSST DESC meetings: UIUC 2025, ETH Zurich 2024, SLAC 2023; CLCOSMO workshops: Grenoble 2024, SLAC 2023</li></ul>
+<h3>Teaching</h3><p>Teaching assistant for PHY 517 Observational Techniques in Astronomy (three terms) and graduate assistant for the Optics and Waves laboratory.</p>
+<h3>Skills</h3><p>C, C++, Python, JavaScript, IDL. High-performance computing on NERSC and Seawulf.</p>`}
+};
+$("#pubsList").innerHTML=PUBS;
+
+/* Clickable galaxies: position in cluster frame (major axis = x) */
+const G=[
+{id:"bcg",p:[0,0,0],l:"BCG: orientation bias"},
+{id:"triax",p:[1.3,.35,.25],l:"Triaxiality"},
+{id:"shear",p:[-1,-.45,.55],l:"Shear ratios"},
+{id:"a360",p:[.5,.65,-.8],l:"Abell 360 with Rubin"},
+{id:"pubs",p:[2,-.35,-.4],l:"Publications"},
+{id:"cv",p:[-1.8,.3,-.35],l:"CV and awards"},
+{id:"triaxpage",p:[1,-.7,.9],l:"Triaxiality project page",href:"triaxiality.html"},
+{id:"shearpage",p:[-.5,.85,-.7],l:"Shear-ratio project page",href:"shear-ratios.html"}];
+
+/* ---------- Page panel ---------- */
+const pg=$("#pg");let lastFocus=null;
+function route(){
+ const id=location.hash.slice(1),d=PAGES[id];
+ if(d){$("#pk").textContent=d.k;$("#pt").textContent=d.t;$("#pb").innerHTML=d.h;
+  if(pg.hidden){lastFocus=document.activeElement}pg.hidden=false;document.body.style.overflow="hidden";$("#x").focus();$(".box").scrollTop=0;}
+ else{pg.hidden=true;document.body.style.overflow="";if(lastFocus)lastFocus.focus();}
+}
+function close(){history.replaceState(null,"",location.pathname+location.search);route();}
+addEventListener("hashchange",route);route();
+$("#x").onclick=close;
+pg.addEventListener("click",e=>{if(e.target===pg)close()});
+addEventListener("keydown",e=>{if(e.key==="Escape"&&!pg.hidden)close()});
+document.addEventListener("click",e=>{const b=e.target.closest("[data-open]");if(b)location.hash=b.dataset.open});
+
+/* ---------- Galaxy buttons ---------- */
+const L=$("#labels");
+G.forEach(g=>{const b=document.createElement(g.href?"a":"button");b.className="gal"+(g.id==="bcg"?" bcg":"")+(g.href?" page":"");
+ if(g.href)b.href=g.href;else b.dataset.open=g.id;
+ b.innerHTML=`<i></i><span>${g.l}</span>`;b.setAttribute("aria-label",g.l);L.appendChild(b);g.el=b;});
+G[0].el.classList.add("show");
+
+/* ---------- 3-D cluster ---------- */
+const cv=$("#bg");let R,C,grp,ST;
+try{
+ R=new THREE.WebGLRenderer({canvas:cv,antialias:true,alpha:true});
+ const S=new THREE.Scene();C=new THREE.PerspectiveCamera(45,1,.1,50);C.position.z=7;
+ grp=new THREE.Group();S.add(grp);
+ const P=[],K=[],Z=[],rn=Math.random;
+ const add=(x,y,z,c,s)=>{P.push(x,y,z);K.push(...c);Z.push(s)};
+ /* intracluster glow */
+ for(let i=0;i<140;i++){const r=2.2*Math.pow(rn(),.8),t=Math.acos(2*rn()-1),f=6.283*rn();
+  add(r*Math.sin(t)*Math.cos(f),r*Math.sin(t)*Math.sin(f)*.62,r*Math.cos(t)*.5,[.05,.07,.15],110)}
+ /* member galaxies: centrally concentrated, axis ratios 1 : 0.62 : 0.5 */
+ for(let i=0;i<1900;i++){const r=3.1*Math.pow(rn(),1.7)+.04,t=Math.acos(2*rn()-1),f=6.283*rn(),b=.35+.65*rn();
+  const c=rn()<.78?[1,.7+.22*rn(),.42+.22*rn()]:[.55,.72,1];
+  add(r*Math.sin(t)*Math.cos(f),r*Math.sin(t)*Math.sin(f)*.62,r*Math.cos(t)*.5,c.map(v=>v*b),5+11*Math.pow(rn(),3))}
+ /* clickable galaxies */
+ G.forEach(g=>{if(g.id==="bcg"){[[-.1,.5],[0,.8],[.1,.5]].forEach(([dx,m])=>add(dx,0,0,[1,.78,.5],95*m));}
+  else add(...g.p,[.6,.78,1],30)});
+ const geo=new THREE.BufferGeometry();
+ geo.setAttribute("position",new THREE.Float32BufferAttribute(P,3));
+ geo.setAttribute("aCol",new THREE.Float32BufferAttribute(K,3));
+ geo.setAttribute("aSize",new THREE.Float32BufferAttribute(Z,1));
+ const mat=new THREE.ShaderMaterial({uniforms:{uPx:{value:1}},transparent:true,depthWrite:false,blending:THREE.AdditiveBlending,
+  vertexShader:"attribute vec3 aCol;attribute float aSize;uniform float uPx;varying vec3 vC;void main(){vC=aCol;vec4 m=modelViewMatrix*vec4(position,1.);gl_PointSize=aSize*uPx*7./-m.z;gl_Position=projectionMatrix*m;}",
+  fragmentShader:"varying vec3 vC;void main(){float d=length(gl_PointCoord-.5)*2.;if(d>1.)discard;float a=pow(1.-d,2.2);gl_FragColor=vec4(vC*1.5,a);}"});
+ grp.add(new THREE.Points(geo,mat));
+ /* major-axis guide */
+ const ax=new THREE.BufferGeometry().setFromPoints([new THREE.Vector3(-3.5,0,0),new THREE.Vector3(3.5,0,0)]);
+ grp.add(new THREE.Line(ax,new THREE.LineBasicMaterial({color:0x86b4ff,transparent:true,opacity:.18})));
+ grp.scale.setScalar(.85);
+ /* background stars: faint small ones plus fewer brighter ones */
+ ST=new THREE.Group();S.add(ST);
+ [[1100,1.3,.65],[260,2.3,.95]].forEach(([n,sz,op])=>{const p=[],c=[];
+  for(let i=0;i<n;i++){const r=14+26*rn(),t=Math.acos(2*rn()-1),f=6.283*rn(),k=.45+.55*rn(),w=rn();
+   p.push(r*Math.sin(t)*Math.cos(f),r*Math.sin(t)*Math.sin(f),r*Math.cos(t));c.push(k*(.8+.2*w),k*.9,k*(1-.25*w));}
+  const g=new THREE.BufferGeometry();g.setAttribute("position",new THREE.Float32BufferAttribute(p,3));g.setAttribute("color",new THREE.Float32BufferAttribute(c,3));
+  ST.add(new THREE.Points(g,new THREE.PointsMaterial({size:sz,sizeAttenuation:false,vertexColors:true,transparent:true,opacity:op,depthWrite:false})));});
+ var size=()=>{const w=innerWidth,h=innerHeight,dpr=Math.min(devicePixelRatio||1,2);R.setPixelRatio(dpr);R.setSize(w,h,false);
+  C.aspect=w/h;C.updateProjectionMatrix();mat.uniforms.uPx.value=dpr*h/900;grp.position.x=w>=860?1.7:0;};
+ size();addEventListener("resize",size);
+ S.userData.s=S;window.__S=S;
+}catch(e){cv.remove();R=null;}
+
+/* ---------- Animation ---------- */
+let cur=0,mx=0,my=0;
+addEventListener("pointermove",e=>{mx=e.clientX/innerWidth-.5;my=e.clientY/innerHeight-.5});
+const v=R&&new THREE.Vector3();
+function tick(now){
+ if(R){
+  const max=document.documentElement.scrollHeight-innerHeight,p=max>0?scrollY/max:0;
+  const tgt=Math.PI*1.2*(1-Math.pow(1-p,1.8))*(RM?.35:1);cur+=(tgt-cur)*(RM?1:.05);
+  grp.rotation.y=cur+(RM?0:now*3e-5)+mx*.15;
+  ST.rotation.y=cur*.2+mx*.03;ST.rotation.x=my*.03;
+  grp.rotation.x=.3+Math.sin(p*3)*.15+my*.08;
+  R.render(window.__S,C);grp.updateMatrixWorld();
+  const w=innerWidth,h=innerHeight,hide=w<860&&scrollY>h*.8;
+  G.forEach(g=>{v.set(...g.p).applyMatrix4(grp.matrixWorld);const z=v.z;v.project(C);
+   g.el.style.transform=`translate(${(v.x*.5+.5)*w}px,${(-v.y*.5+.5)*h}px)`;
+   g.el.style.opacity=hide?0:Math.max(.35,Math.min(1,.55+z*.2));g.el.style.pointerEvents=hide?"none":"auto";g.el.tabIndex=hide?-1:0;});
+ }
+ requestAnimationFrame(tick);
+}
+requestAnimationFrame(tick);
+if(!R)L.remove();
+})();
+</script>
+</body>
+</html>
